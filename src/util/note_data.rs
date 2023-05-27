@@ -16,6 +16,18 @@ impl NoteData {
         Self { pitch, start, end }
     }
 
+    pub fn get_pitch(&self) -> Pitch {
+        self.pitch
+    }
+
+    pub fn get_start(&self) -> MusicalTime {
+        self.start
+    }
+
+    pub fn get_end(&self) -> MusicalTime {
+        self.end
+    }
+
     pub fn increment(&mut self) {
         self.pitch.increment();
     }
@@ -125,6 +137,12 @@ impl Note {
             Note::D => Note::CS,
             Note::CS => Note::C,
         }
+    }
+
+    pub fn add_semitones(&self, semitones: u8) -> Self {
+        let mut n = *self as u8;
+        n += semitones;
+        Note::from(n % 12)
     }
 }
 

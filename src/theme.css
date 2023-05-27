@@ -81,10 +81,6 @@ piano-roll .context-toolbar {
     /* box-shadow: 0px 2px 16px #000000ad; */
 }
 
-noteview {
-    background-color: rgb(212, 77, 49);
-}
-
 /* GridView */
 
 gridview {
@@ -150,6 +146,14 @@ pianotile.black-key.space-27 {
 pianotile.black-key label {
     color: #fff;
 }
+
+/* NoteView */
+
+noteview {
+    border-radius: 2px;
+    background-color: #55adff;
+}
+
 /* .transport button {
     background-color: transparent;
     border-width: 0px;

@@ -1,6 +1,6 @@
 use vizia::prelude::*;
 
-use crate::{Note, Pitch, MAX_OCTAVE, MIN_OCTAVE};
+use crate::{note_to_key_height, Note, Pitch, MAX_OCTAVE, MIN_OCTAVE};
 pub struct PianoView<SL>
 where
     SL: Lens<Target = f32>,
@@ -49,7 +49,6 @@ where
                 .class("pianoview-octave");
             }
         })
-        .hoverable(false)
     }
 }
 
@@ -85,7 +84,6 @@ where
                 Label::new(cx, &format!("C{}", pitch.octave()));
             }
         })
-        .hoverable(true)
         .height(Pixels(note_to_key_height(pitch.note())))
     }
 }
@@ -96,18 +94,5 @@ where
 {
     fn element(&self) -> Option<&'static str> {
         Some("pianotile")
-    }
-}
-
-pub fn note_to_key_height(note: Note) -> f32 {
-    if note.is_black_key() {
-        14.0
-    } else {
-        let mut height = 23.0;
-        match note {
-            Note::D | Note::F | Note::B => height += 1.0,
-            _ => {}
-        }
-        height
     }
 }

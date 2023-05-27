@@ -5,7 +5,6 @@ use vizia::{icons::ICON_POINTER, prelude::*};
 use crate::MusicalTime;
 use crate::NoteData;
 
-
 #[derive(Lens, Data, Clone)]
 pub struct GridView {
     // TODO: Move this up
@@ -211,10 +210,10 @@ impl View for NoteView {
                     //     cx.emit(PianoRollEvent::MoveUp(self.index));
                     //     self.down_pos = *y;
                     // }
-                    if dy >= 13.0 * 1.5 {
+                    if dy >= 13.0 {
                         cx.emit(PianoRollEvent::MoveDown(self.index));
                         self.down_pos = *y;
-                    } else if dy <= -13.0 * 1.5 {
+                    } else if dy <= -13.0 {
                         cx.emit(PianoRollEvent::MoveUp(self.index));
                         self.down_pos = *y;
                     }
